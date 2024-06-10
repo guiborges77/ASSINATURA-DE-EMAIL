@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Assinatura</title>
+    <style>
+      body {
+        font-family: "Montserrat", sans-serif;
+        width: 100%;
+        background: linear-gradient(90deg, rgb(41, 41, 41), rgb(12, 12, 12));
+        color: white;
+      }
+      .input-container {
+        flex-direction: column;
+        width: 40%;
+        margin-right: 20px;
+      }
+      .output-container {
+        padding: 1rem;
+        width: 400px;
+        background-color: #f0f0f3;
+        height: 420px;
+      }
+      h2 {
+        color: rgb(221, 221, 221);
+      }
+      label {
+        font-weight: 500;
+        color: rgb(221, 221, 221);
+      }
+
+      input {
+        font-size: 1rem;
+        color: #252525;
+        margin: 10px 0;
+        padding: 15px;
+        width: 90%;
+        font-family: "Montserrat", sans-serif;
+        border: none;
+        border-radius: 5px;
+      }
+      input::placeholder {
+        color: #252525; /* Placeholder com cor mais clara */
+        font-family: "Montserrat", sans-serif; /* Aplica a fonte 'Montserrat' ao placeholder */
+      }
+      input:focus {
+        color: #252525; /* Aplica a cor preta ao texto quando o input está em foco */
+        outline: none; /* Remove o outline padrão do navegador */
+      }
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+      .circular-img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+      table {
+        width: 100%; /* Assegura que a tabela se expanda para ocupar a largura disponível */
+      }
+
+      input[type="file"] {
+        font-family: "Montserrat", sans-serif;
+
+        color: rgb(255, 255, 255);
+        font-weight: 500;
+        border-radius: 2rem;
+        padding: 1rem 3rem;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        display: inline-block;
+        width: auto;
+        margin: 10px 0;
+        position: relative;
+        overflow: hidden;
+      }
+
+      input[type="file"]::-webkit-file-upload-button {
+        background-color: #ff6137;
+        padding: 0.5rem 1rem;
+        border-radius: 1rem;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        font-size: 1rem;
+        border: none;
+        outline: none;
+        color: white;
+      }
+
+      .container {
+        width: 100%;
+        display: flex;
+        padding: 20px;
+        display: flex;
+        justify-content: space-around;
+      }
+
+      button {
+        padding: 1rem 3rem;
+        font-size: 1.5rem;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        border-radius: 2rem;
+        outline: none;
+        border: none;
+        background-color: #ff6137;
+        color: white;
+        text-shadow: black;
+        box-shadow: #000001;
+        margin-top: 1rem;
+      }
+      .button-div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .button-div button:hover {
+        cursor: pointer;
+      }
+
+      .upload-foto {
+        display: flex;
+        flex-direction: column;
+      }
+      #input-file {
+        margin-top: -10px;
+        margin-left: -50px;
+      }
+
+      #input-file:hover {
+        cursor: pointer;
+      }
+    </style>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div
+      style="
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Roboto';
+        text-transform: uppercase;
+        font-size: 1.5rem;
+      "
+    >
+      <h1>Assinatura de e-mail</h1>
+    </div>
+    <div class="container">
+      <div class="input-container">
+        <h2>Atualize os dados</h2>
+        <div class="upload-foto">
+          <label for="input-foto">URL da Foto Principal:</label>
+          <input
+            type="text"
+            id="input-foto"
+            placeholder="Insira a URL da foto"
+          />
+          <input type="file" id="input-file" accept="image/*" />
+        </div>
+        <label for="input-nome">Nome Completo:</label><br />
+        <input
+          type="text"
+          id="input-nome"
+          placeholder="Insira o nome completo"
+        /><br />
+
+        <label for="input-especializacao">Especialização:</label><br />
+        <input
+          type="text"
+          id="input-especializacao"
+          placeholder="Insira a especialização"
+        /><br />
+
+        <label for="input-telefone">Telefone:</label><br />
+        <input
+          type="text"
+          id="input-telefone"
+          placeholder="Insira o telefone"
+        /><br />
+
+        <label for="input-email">Email:</label><br />
+        <input
+          type="text"
+          id="input-email"
+          placeholder="Insira o email"
+        /><br />
+        <div class="button-div">
+          <button onclick="atualizarDados()">Atualizar</button>
+        </div>
+      </div>
+
+      <div class="output-container">
+        <table
+          width="400"
+          height="375"
+          cellpadding="0"
+          cellspacing="0"
+          border="0"
+        >
+          <tbody style="width: 400px">
+            <tr style="background-color: #f0f0f3">
+              <td>
+                <table
+                  width="360"
+                  height="213"
+                  cellpadding="0"
+                  cellspacing="0"
+                  border="0"
+                  align="center"
+                >
+                  <tbody>
+                    <tr>
+                      <td height="20"><br /></td>
+                    </tr>
+                    <tr>
+                      <td width="90">
+                        <table
+                          width="90"
+                          cellpadding="0"
+                          cellspacing="0"
+                          border="0"
+                          align="center"
+                        >
+                          <tbody>
+                            <tr>
+                              <td>
+                                <table
+                                  width="85"
+                                  cellpadding="0"
+                                  cellspacing="0"
+                                  border="0"
+                                  align="center"
+                                >
+                                  <tbody>
+                                    <tr>
+                                      <td align="center">
+                                        <a href="">
+                                          <img
+                                            id="foto-principal"
+                                            class="circular-img"
+                                            src="https://s2-techtudo.glbimg.com/25ZuNLnWE9XVb2fkuUPQGgeCsnQ=/0x0:450x450/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2023/8/b/65fv6cSBCqi5hTAjBELQ/urubu-do-pix-1.png"
+                                            alt=""
+                                          />
+                                        </a>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td align="center">
+                                        <a href="https://www.dsop.com.br/">
+                                          <img
+                                            src="https://lh3.google.com/u/0/d/1yrLtiXMhyitRRqWSKBazknA25ISIWTLj=w2000-h1900-iv1"
+                                            alt="dsop"
+                                          />
+                                        </a>
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td>
+                                        <span
+                                          style="
+                                            color: #000001;
+                                            font-size: 10px;
+                                            font-family: Arial, Helvetica,
+                                              sans-serif;
+                                          "
+                                        >
+                                          O Ecossistemado comportamento
+                                          financeiro.
+                                        </span>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </td>
+                      <td width="20"></td>
+                      <td width="240">
+                        <table
+                          width="240"
+                          cellpadding="0"
+                          cellspacing="0"
+                          border="0"
+                          align="center"
+                        >
+                          <tbody>
+                            <tr>
+                              <td>
+                                <span
+                                  id="nome-completo"
+                                  style="
+                                    color: #ff6137;
+                                    font-size: 20px;
+                                    font-family: Arial, Helvetica, sans-serif;
+                                    font-weight: bold;
+                                  "
+                                >
+                                  Fulano Ciclano
+                                </span>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <span
+                                  id="especializacao"
+                                  style="
+                                    color: #000001;
+                                    font-size: 13px;
+                                    font-family: Arial, Helvetica, sans-serif;
+                                  "
+                                >
+                                  Educador Financeiro
+                                </span>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <img src="" alt="" />
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <table
+                                  width="240"
+                                  cellpadding="0"
+                                  cellspacing="0"
+                                  border="0"
+                                  align="center"
+                                >
+                                  <tbody>
+                                    <tr>
+                                      <td width="20">
+                                        <img
+                                          src="https://lh3.google.com/u/0/d/1uprmHfd2_KAd4MQUyT2GraIWo4H2Fw-x=w1920-h903-iv1"
+                                          alt="Telefone"
+                                        />
+                                      </td>
+                                      <td align="left">
+                                        <span
+                                          id="telefone"
+                                          style="
+                                            color: #000001;
+                                            font-size: 12px;
+                                            font-family: Arial, Helvetica,
+                                              sans-serif;
+                                          "
+                                          >+55 11 00000-0000</span
+                                        >
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td width="20">
+                                        <img
+                                          src="https://lh3.google.com/u/0/d/1nYODp7X9QSOxkCzp9RC0DRCTfBQa-Sme=w1920-h903-iv1"
+                                          alt="Email"
+                                        />
+                                      </td>
+                                      <td align="left">
+                                        <span
+                                          id="email"
+                                          style="
+                                            color: #000001;
+                                            font-size: 12px;
+                                            font-family: Arial, Helvetica,
+                                              sans-serif;
+                                          "
+                                          >fulano@dsop.com.br</span
+                                        >
+                                      </td>
+                                    </tr>
+                                    <tr>
+                                      <td width="20">
+                                        <img
+                                          src="https://lh3.google.com/u/0/d/17q33vBj0_PIjTN1o54Q8hSGHzP8lfJzp=w1920-h903-iv1"
+                                          alt="Endereço"
+                                        />
+                                      </td>
+                                      <td align="left">
+                                        <span
+                                          style="
+                                            color: #000001;
+                                            font-size: 12px;
+                                            font-family: Arial, Helvetica,
+                                              sans-serif;
+                                          "
+                                          >Rua Alba, 88 | Parque Jabaquara<br />
+                                          São Paulo | SP | 04346-000</span
+                                        >
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <table
+                                  width="200"
+                                  cellpadding="0"
+                                  cellspacing="0"
+                                  border="0"
+                                  align="left"
+                                >
+                                  <tbody>
+                                    <tr>
+                                      <td align="left" width="30">
+                                        <a
+                                          href="https://www.facebook.com/DSOPEducacaoFinanceira"
+                                        >
+                                          <img
+                                            src="https://lh3.google.com/u/0/d/1dvRhm9Wfm21TOLonIbbURHwbqr1tWGJ-=w1920-h903-iv1"
+                                            alt="Facebook"
+                                          />
+                                        </a>
+                                      </td>
+                                      <td align="left" width="30">
+                                        <a
+                                          href="https://www.instagram.com/dsop.oficial/"
+                                        >
+                                          <img
+                                            src="https://lh3.google.com/u/0/d/1kWGoPCWtMS84fNIyOX6yUr9_xILnWiad=w1920-h903-iv1"
+                                            alt="Instagram"
+                                          />
+                                        </a>
+                                      </td>
+                                      <td align="left" width="30">
+                                        <a
+                                          href="https://www.youtube.com/channel/UCnl_GlGSio7pI1VtaGjV9xw"
+                                        >
+                                          <img
+                                            src="https://lh3.google.com/u/0/d/1vAVRU10AlQxLec1oNtfobnr_GFQy53NJ=w1920-h903-iv1"
+                                            alt="Youtube"
+                                          />
+                                        </a>
+                                      </td>
+                                      <td align="left" width="30">
+                                        <a
+                                          href="https://www.linkedin.com/company/dsopoficial/"
+                                        >
+                                          <img
+                                            src="https://lh3.google.com/u/0/d/1ZgAmMRfkBWf219ajlUBA4Ft14Q4twgTL=w1920-h903-iv1"
+                                            alt="Linkedin"
+                                          />
+                                        </a>
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td height="20"><br /></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <!-- Ajuste para garantir que a imagem tenha exatamente 400px de largura -->
+                <a href="https://www.dsop.com.br/"
+                  ><img
+                    src="https://lh3.google.com/u/0/d/1klcYMVUhwdlmBhOHPoQumkKU9x7rOGdQ=w1920-h903-iv1"
+                    alt="Ensinar educação financeira para todos faz o mundo melhor."
+                    style="width: 400px"
+                /></a>
+              </td>
+            </tr>
+            <tr>
+              <td height="5"></td>
+            </tr>
+            <tr>
+              <td>
+                <span
+                  style="
+                    color: #000001;
+                    font-size: 10px;
+                    font-family: Arial, Helvetica, sans-serif;
+                  "
+                  >Obrigam-se os receptores deste e-mail a cumprir todas as
+                  determinações que lhes forem aplicáveis no que diz respeito à
+                  preservação da privacidade e proteção de dados pessoais,
+                  especialmente a Lei nº 13.709/2018 (“Lei Geral de Proteção de
+                  Dados”), a Lei nº 12.965/2014 (“Marco Civil da Internet”) e o
+                  decreto nº 8.771/2016.</span
+                >
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <script>
+      function atualizarDados() {
+        // Atualiza a foto principal pela URL
+        let fotoUrl = document.getElementById("input-foto").value;
+        if (fotoUrl) {
+          document.getElementById("foto-principal").src = fotoUrl;
+        }
+
+        // Atualiza a foto principal pelo arquivo
+        let fotoFile = document.getElementById("input-file").files[0];
+        if (fotoFile) {
+          let reader = new FileReader();
+          reader.onload = function (e) {
+            document.getElementById("foto-principal").src = e.target.result;
+          };
+          reader.readAsDataURL(fotoFile);
+        }
+
+        // Atualiza o nome completo
+        let nome = document.getElementById("input-nome").value;
+        if (nome) {
+          document.getElementById("nome-completo").textContent = nome;
+        }
+
+        // Atualiza a especialização
+        let especializacao = document.getElementById(
+          "input-especializacao"
+        ).value;
+        if (especializacao) {
+          document.getElementById("especializacao").textContent =
+            especializacao;
+        }
+
+        // Atualiza o telefone
+        let telefone = document.getElementById("input-telefone").value;
+        if (telefone) {
+          document.getElementById("telefone").textContent = telefone;
+        }
+
+        // Atualiza o email
+        let email = document.getElementById("input-email").value;
+        if (email) {
+          document.getElementById("email").textContent = email;
+        }
+      }
+    </script>
+  </body>
+</html>
