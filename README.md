@@ -8,13 +8,9 @@ Este projeto é um editor e gerador de assinatura de e-mail. Ele permite aos usu
 - Campos para nome completo, especialização, telefone e e-mail
 - Pré-visualização da assinatura de e-mail
 
-## Captura de Tela
-
-![Editor de Assinatura de E-mail](./path/to/assinaturadeemailtela.png)
-
 ## Como Usar
 
-1. **Clone o repositório:**
-   ```sh
-   git clone https://github.com/seu-usuario/nome-do-repositorio.git
-   cd nome-do-repositorio
+Para usar o editor e gerador de assinatura de e-mail, basta acessar um dos links abaixo:
+
+- [https://assinaturadeemaildsop.netlify.app](https://assinaturadeemaildsop.netlify.app)
+- [https://guiborges77.github.io/ASSINATURA-DE-EMAIL/](https://guiborges77.github.io/ASSINATURA-DE-EMAIL/)
